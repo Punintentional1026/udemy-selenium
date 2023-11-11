@@ -1,7 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SelIntroduction implements WebDriver {
+public class SelIntroduction {
 
 	public static void main(String[] args) {
 
