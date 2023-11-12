@@ -18,7 +18,11 @@ public class SelIntroduction {
 		//WebDriver close get
 		//WebDriver methods + class methods
 
-		//
+		//chromedriver.exe -> Chrome browser Selenium Manager
+		//Step to invoke chrome driver
+		//Without this line, Selenium Manager has to connect to the web and download this file before execution making the tests slower
+		//This is optional. Recommended is to have Selenium Manager to download, since it downloads the latest version
+		//System.setProperty("webdriver.chrom.driver", "C:/Users/Telum/Documents/GitHub/chromedriver-win64/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		
 
