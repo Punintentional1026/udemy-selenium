@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SelIntroduction {
 
@@ -19,15 +20,23 @@ public class SelIntroduction {
 		//WebDriver methods + class methods
 
 		//chromedriver.exe -> Chrome browser
-		System.setProperty("webdriver.chrom.driver", "C:/Users/Telum/Documents/GitHub/chromedriver-win64/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 		
 		//webdriver.chrome.driver -> value of path
-		WebDriver driver = new ChromeDriver();
+		//WebDriver driver = new ChromeDriver();
+		
+		//Firefox Launch
+		//geckodriver
+		
+		//webdriver.gecko.driver
+		System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/geckodriver/geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		
 		driver.get("https://rahulshettyacademy.com");
 		System.out.println(driver.getTitle());
 		System.out.println(driver.getCurrentUrl());
 		driver.close(); //Close current window/tab only
-		driver.quit();  //Close all open windows/tabs
+		//driver.quit();  //Close all open windows/tabs
 	}
 
 }
