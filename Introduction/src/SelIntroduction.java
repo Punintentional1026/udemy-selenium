@@ -18,14 +18,16 @@ public class SelIntroduction {
 		//WebDriver close get
 		//WebDriver methods + class methods
 
-		//chromedriver.exe -> Chrome browser Selenium Manager
-		//Step to invoke chrome driver
-		//Without this line, Selenium Manager has to connect to the web and download this file before execution making the tests slower
-		//This is optional. Recommended is to have Selenium Manager to download, since it downloads the latest version
-		//System.setProperty("webdriver.chrom.driver", "C:/Users/Telum/Documents/GitHub/chromedriver-win64/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+		//chromedriver.exe -> Chrome browser
+		System.setProperty("webdriver.chrom.driver", "C:/Users/Telum/Documents/GitHub/chromedriver-win64/chromedriver.exe");
 		
-
+		//webdriver.chrome.driver -> value of path
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com");
+		System.out.println(driver.getTitle());
+		System.out.println(driver.getCurrentUrl());
+		driver.close(); //Close current window/tab only
+		driver.quit();  //Close all open windows/tabs
 	}
 
 }
