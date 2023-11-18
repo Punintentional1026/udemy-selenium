@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CoreJavaBrushUp2 {
 
@@ -23,6 +25,7 @@ public class CoreJavaBrushUp2 {
 			}
 		}
 		
+		//create object of the class - object.method
 		ArrayList<String> a = new ArrayList<String>();
 		a.add("rahul");
 		a.add("sheety");
@@ -30,7 +33,22 @@ public class CoreJavaBrushUp2 {
 		a.add("selenium");
 		System.out.println(a.get(3));
 		
-		//create object of the class - object.method
+		for(int i = 0; i < a.size(); i++)
+		{
+			System.out.println(a.get(i));
+		}
+		System.out.println("***********");
+		for(String val: a)
+		{
+			System.out.println(val);
+		}
+		
+		//item is present in ArrayList
+		System.out.println(a.contains("selenium"));
+		
+		String[] name = {"rahul", "shetty", "selenium" };
+		List<String> nameArrayList = Arrays.asList(name);
+		System.out.println(nameArrayList.contains("selenium"));
 	}
 
 }
