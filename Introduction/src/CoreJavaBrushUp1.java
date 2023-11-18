@@ -40,6 +40,11 @@ public class CoreJavaBrushUp1 {
 		{
 			System.out.println(name[i]);
 		}
+		
+		for( String s: name)
+		{
+			System.out.println(s);
+		}
 	}
 
 }
