@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SelIntroduction {
@@ -19,18 +20,17 @@ public class SelIntroduction {
 		//WebDriver close get
 		//WebDriver methods + class methods
 
-		//chromedriver.exe -> Chrome browser
-		//System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
+		//Chrome
+		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
 		
-		//webdriver.chrome.driver -> value of path
-		//WebDriver driver = new ChromeDriver();
-		
-		//Firefox Launch
-		//geckodriver
-		
-		//webdriver.gecko.driver
+		//Firefox
 		System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/geckodriver/geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		WebDriver driver1 = new FirefoxDriver();
+		
+		//Microsoft Edge
+		System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/edgedriver_win64/msedgedriver.exe");
+		WebDriver driver2 = new EdgeDriver();
 		
 		driver.get("https://rahulshettyacademy.com");
 		System.out.println(driver.getTitle());
