@@ -21,16 +21,18 @@ public class SelIntroduction {
 		//WebDriver methods + class methods
 
 		//Chrome
+		//SeleniumManager (Beta phase) - Handles downloading the correct driver and version
+		//SeleniumManager is disabled if you use System.setProperty("webdriver.chrome.driver"
 		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		
 		//Firefox
-		System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/geckodriver/geckodriver.exe");
-		WebDriver driver1 = new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/geckodriver/geckodriver.exe");
+		//WebDriver driver1 = new FirefoxDriver();
 		
 		//Microsoft Edge
-		System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/edgedriver_win64/msedgedriver.exe");
-		WebDriver driver2 = new EdgeDriver();
+		//System.setProperty("webdriver.gecko.driver", "C:/Users/Telum/Documents/GitHub/edgedriver_win64/msedgedriver.exe");
+		//WebDriver driver2 = new EdgeDriver();
 		
 		driver.get("https://rahulshettyacademy.com");
 		System.out.println(driver.getTitle());
