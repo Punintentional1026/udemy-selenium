@@ -10,7 +10,15 @@ public class UpdatedDropdown {
 
 		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		
+		System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+		System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		
+		System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
+		
 		driver.findElement(By.id("divpaxinfo")).click();
 		Thread.sleep(2000L);
 
