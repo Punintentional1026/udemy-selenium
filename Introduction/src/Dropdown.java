@@ -10,7 +10,7 @@ public class Dropdown {
 		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
-		driver.manage().window().fullscreen();
+		driver.manage().window().maximize();
 
 		//	//a[@value='BLR'] - xpath for Bengaluru
 		//	//a[@value='MAA'] - xpath for Chennai
@@ -24,6 +24,9 @@ public class Dropdown {
 		Thread.sleep(2000);
 		//driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
 		driver.findElement(By.xpath("//div[@id='ctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
+
+		Thread.sleep(2000);
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight")).click();
 		
 		driver.quit();
 	}
