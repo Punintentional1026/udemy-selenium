@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -15,16 +16,20 @@ public class base {
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/");
 		
-		//expected
-		String[] names = {"Cucumber", "Brocolli"}; 
+		String[] itemsNeeded = {"Cucumber", "Brocolli", "Beetroot"}; 
 		
 		List<WebElement> products = driver.findElements(By.cssSelector("h4.product-name"));)
 
 		for (int i=0; i < products.size(); i++)
 		{
 			String name = products.get(i).getText();
+			// format it to get actual vegetable name
+			// convert array into array list for easy search
+			// check whether name you extracted is present in array or not
 			
-			if (name.contains("Cucumber"))
+			List<String> itemsNeededList = Arrays.asList(itemsNeeded);
+		
+			if (itemsNeededList.contains(name))
 			{
 				//click on Add to Card
 				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
@@ -32,17 +37,6 @@ public class base {
 			}
 		}
 
-		for (int i=0; i < products.size(); i++)
-		{
-			String name = products.get(i).getText();
-			
-			if (name.contains("Brocoli"))
-			{
-				//click on Add to Card
-				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
-				break;
-			}
-		}
 	}
 
 }
