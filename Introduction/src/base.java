@@ -19,7 +19,13 @@ public class base {
 		Thread.sleep(3000L);
 
 		String[] itemsNeeded = { "Cucumber", "Brocolli", "Beetroot", "Carrot" };
+		addItems(driver, itemsNeeded);
+		driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+		driver.findElement(By.xpath("//button[contains(text(), 'PROCEED TO CHECKOUT')]")).click();
+		driver.findElement(By.cssSelector("input.promocode")).sendKeys("rahulshettyacademy");
+	}
 
+	public static void addItems(WebDriver driver, String[] itemsNeeded) {
 		List<WebElement> products = driver.findElements(By.cssSelector("h4.product-name"));
 
 		int j = 0;
@@ -44,7 +50,5 @@ public class base {
 				}
 			}
 		}
-
 	}
-
 }
