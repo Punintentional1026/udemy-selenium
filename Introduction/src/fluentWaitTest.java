@@ -26,11 +26,18 @@ public class fluentWaitTest {
 
 		WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
 		     public WebElement apply(WebDriver driver) {
-		       return driver.findElement(By.cssSelector("[id='finish'] h4"));
+		       if (driver.findElement(By.cssSelector("[id='finish'] h4")).isDisplayed())
+		       {
+		    	   return driver.findElement(By.cssSelector("[id='finish'] h4"));
+		       }
+		       else
+		       {
+		    	   return null;
+		       }
 		     }
 		   });
 		
-		System.out.print(driver.findElement(By.cssSelector("[id='finish'] h4")).isDisplayed());
+		System.out.print(driver.findElement(By.cssSelector("[id='finish'] h4")).getText());
 	}
 
 }
