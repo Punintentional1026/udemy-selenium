@@ -12,7 +12,7 @@ public class Scope {
 		// TODO Auto-generated method stub
 
 		//1. Give me the count of links on the page
-		//a
+		//2. Count of footer section
 
 		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
@@ -27,8 +27,20 @@ public class Scope {
 		System.out.println(links.size());
 		
 		//This is how the instructor handled getting all of the links in the footer by defining the scope of the driver
+		//Limiting webdriver scope
 		WebElement footerDriver = driver.findElement(By.id("gf-BIG"));
 		System.out.println(footerDriver.findElements(By.tagName("a")).size());
+		
+		//3. Links of only the first column in the footer
+		WebElement columnDriver = footerDriver.findElement(By.xpath("//table/tbody/tr/td[1]/ul"));
+		System.out.println(columnDriver.findElements(By.tagName("a")).size());
+		
+		//4. Click on each link in the column and check if the pages are opening
+		for(int i=1; i<columnDriver.findElements(By.tagName("a")).size(); i++)
+		{
+			columnDriver.findElements(By.tagName("a")).get(i).click();
+		}
+
 	}
 
 }
