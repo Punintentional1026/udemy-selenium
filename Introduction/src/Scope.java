@@ -2,6 +2,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,7 +39,9 @@ public class Scope {
 		//4. Click on each link in the column and check if the pages are opening
 		for(int i=1; i<columnDriver.findElements(By.tagName("a")).size(); i++)
 		{
-			columnDriver.findElements(By.tagName("a")).get(i).click();
+			String clickOnLinkTab = Keys.chord(Keys.CONTROL, Keys.ENTER);
+			
+			columnDriver.findElements(By.tagName("a")).get(i).sendKeys(clickOnLinkTab);
 		}
 
 	}
