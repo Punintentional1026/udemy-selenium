@@ -1,6 +1,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -36,6 +37,11 @@ public class JavaScriptExecutorDemo {
 		}
 		
 		System.out.println(sum);
+		
+		System.out.println(driver.findElement(By.className("totalAmount")).getText());
+		int total = Integer.parseInt(driver.findElement(By.className("totalAmount")).getText().split(":")[1].trim());
+		
+		Assert.assertEquals(sum, total);
 	}
 
 }
