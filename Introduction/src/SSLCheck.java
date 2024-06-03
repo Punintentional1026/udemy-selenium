@@ -11,10 +11,11 @@ public class SSLCheck {
 		// TODO Auto-generated method stub
 		ChromeOptions options = new ChromeOptions();
 		options.setAcceptInsecureCerts(true);
-		FirefoxOptions options1 = new FirefoxOptions();
-		options1.setAcceptInsecureCerts(true);
-		EdgeOptions options2 = new EdgeOptions();
-		options2.setAcceptInsecureCerts(true);
+		
+//		FirefoxOptions options1 = new FirefoxOptions();
+//		options1.setAcceptInsecureCerts(true);
+//		EdgeOptions options2 = new EdgeOptions();
+//		options2.setAcceptInsecureCerts(true);
 
 		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 
