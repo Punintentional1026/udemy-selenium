@@ -30,12 +30,21 @@ public class LiveDemo {
 		
 		//compare original list vs sorted list
 		Assert.assertTrue(originalList.equals(sortedList));
+		List<String> price;
 		
 		//scan the name column with getText -> Rice -> Print the price of the Rice
-		List<String> price = elementsList.stream().filter(s->s.getText().contains("Beans")).
-		map(s->getPriceVeggie(s)).collect(Collectors.toList());
-		
-		price.forEach(a -> System.out.println(a));
+		do
+		{
+			List<WebElement> rows = driver.findElements(By.xpath("//tr/td[1]"));
+			price = rows.stream().filter(s->s.getText().contains("Rice")).
+			map(s->getPriceVeggie(s)).collect(Collectors.toList());
+			
+			price.forEach(a -> System.out.println(a));
+			if(price.size() < 1)
+			{
+				driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+			}
+		} while(price.size() < 1);
 		
 		driver.quit();
 
