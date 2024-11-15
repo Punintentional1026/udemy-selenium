@@ -1,0 +1,17 @@
+TestNG Tutorial
+Importance of TestNG
+Installation and configuration in Eclipse
+Testing XML file Importance
+Controlling Testcase executions from Testing XML files
+Include Exclude Mechanism
+Understanding TestNG Annotations
+Groups
+Data Provider Annotation
+Annotation helper Attributes
+Parameterization in TestNG xml file
+Running Tests in parallel with TestNG
+
+
+How to run tests with TestNG?
+You need to have @Test Annotation followed by method
+You can define multiple tests from single class
