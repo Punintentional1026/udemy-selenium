@@ -20,6 +20,7 @@ public class NewWindow {
 		System.setProperty("webdriver.chrome.driver", "C:/Users/Telum/Documents/GitHub/chromedriver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/angularpractice/");
+		//Switching Window
 		driver.switchTo().newWindow(WindowType.WINDOW);
 		
 		Set<String> handles = driver.getWindowHandles();
@@ -36,11 +37,16 @@ public class NewWindow {
 		driver.switchTo().window(parentWindowId);
 		WebElement name = driver.findElement(By.cssSelector("[name='name']"));
 		name.sendKeys(courseName);
+
+		//Screenshot
 		File file = name.getScreenshotAs(OutputType.FILE);
-		
 		FileUtils.copyFile(file, new File("logo.png"));
 		
-		driver.quit();
+		//Get Height & Width
+		System.out.println(name.getRect().getDimension().getHeight());
+		System.out.println(name.getRect().getDimension().getWidth());
+		
+		//driver.quit();
 
 	}
 
