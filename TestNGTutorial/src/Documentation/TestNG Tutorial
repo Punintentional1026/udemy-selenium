@@ -2,7 +2,7 @@ TestNG Tutorial
 Importance of TestNG
 Installation and configuration in Eclipse
 Testing XML file Importance
-Controlling Testcase executions from Testing XML files
+Controlling Test case executions from Testing XML files
 Include Exclude Mechanism
 Understanding TestNG Annotations
 Groups
