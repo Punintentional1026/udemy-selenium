@@ -15,6 +15,8 @@ Running Tests in parallel with TestNG
 How to run tests with TestNG?
 You need to have @Test Annotation followed by method
 You can define multiple tests from single class
+You can modularize the test cases based upon functionality and trigger them accordingly
+You can also get a control on running specific methods from test case
 
 
 Installing TestNG into Eclipse
