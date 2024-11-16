@@ -9,5 +9,11 @@ public class Day1 {
 	{
 		System.out.println("hello"); //automation
 	}
+	
+	@Test
+	public void SecondTest()
+	{
+		System.out.println("bye");
+	}
 
 }

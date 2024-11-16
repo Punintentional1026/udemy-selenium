@@ -15,3 +15,14 @@ Running Tests in parallel with TestNG
 How to run tests with TestNG?
 You need to have @Test Annotation followed by method
 You can define multiple tests from single class
+
+
+Installing TestNG into Eclipse
+
+
+Creating a TestNG XML file
+1) Right click on the project > TestNG > Convert to TestNG
+2) Click Next
+3) Click Finish
+
+TestNG XML Format Hierarchy : Test Suite -> Test Folder(module) -> Test Cases
