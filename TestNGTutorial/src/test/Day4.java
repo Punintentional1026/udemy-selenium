@@ -11,7 +11,7 @@ public class Day4 {
 		System.out.println("WebLoginHome");
 	}
 	
-	@Test
+	@Test(groups={"Smoke"})
 	public void MobileLoginHomeLoan()
 	{
 		//Appium

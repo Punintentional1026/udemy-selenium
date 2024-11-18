@@ -28,3 +28,8 @@ Creating a TestNG XML file
 3) Click Finish
 
 TestNG XML Format Hierarchy : Test Suite -> Test Folder(module) -> Test Cases
+
+4 test (methods in class) BeforeMethod ==
+BF 1, BF 2, BF 3, BF 4
+
+Clear cut understanding on annotations
