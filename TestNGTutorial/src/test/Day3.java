@@ -53,21 +53,21 @@ public class Day3 {
 		System.out.println("I am no 1");
 	}
 	
-	@Test
+	@Test(enabled=false)
 	public void MobileSignInCarLoan()
 	{
 		//Appium
 		System.out.println("Mobile SIGN IN");
 	}
 	
-	@Test
+	@Test(timeOut=4000)
 	public void MobileSignOutCarLoan()
 	{
 		//Appium
 		System.out.println("Mobile SIGN OUT");
 	}
 	
-	@Test
+	@Test(dependsOnMethods={"WebLoginCarLoan","MobileSignOutCarLoan"})
 	public void APICarLoan()
 	{
 		//Rest API automation
