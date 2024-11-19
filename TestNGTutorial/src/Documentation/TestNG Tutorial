@@ -33,3 +33,5 @@ TestNG XML Format Hierarchy : Test Suite -> Test Folder(module) -> Test Cases
 BF 1, BF 2, BF 3, BF 4
 
 Clear cut understanding on annotations
+Global environment variables can be incorporated through Selenium
+Parameterizing with multiple data sets by running tests with multiple combination
