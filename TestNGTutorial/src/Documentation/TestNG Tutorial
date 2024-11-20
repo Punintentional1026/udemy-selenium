@@ -10,7 +10,9 @@ Data Provider Annotation
 Annotation helper Attributes
 Parameterization in TestNG xml file
 Running Tests in parallel with TestNG
-
+TestNG Listeners
+	** ITestListener - Add unimplemented methods missing in eclipse
+	Right click on the class --> select source --> choose override/implement methods --> then pick the methods you'd like to implement.
 
 How to run tests with TestNG?
 You need to have @Test Annotation followed by method
@@ -35,3 +37,4 @@ BF 1, BF 2, BF 3, BF 4
 Clear cut understanding on annotations
 Global environment variables can be incorporated through Selenium
 Parameterizing with multiple data sets by running tests with multiple combination
+	2 way to pass in data: 1) TestNG XML file 2) DataProvider in the class file
