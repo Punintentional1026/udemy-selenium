@@ -24,7 +24,7 @@ public class Listeners implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		// TODO Auto-generated method stub
 		ITestListener.super.onTestFailure(result);
-		System.out.println("I failed executed Listeners Pass code");
+		System.out.println("I failed executed Listeners Pass code " + result.getName());
 	}
 
 	@Override
