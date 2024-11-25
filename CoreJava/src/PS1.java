@@ -11,6 +11,8 @@ public class PS1 extends PS {
 		doThis(); // parent class
 		System.out.println(ps2.increment());
 		System.out.println(ps2.decrement());
+
+		System.out.println(ps2.multiplyThree());
 	}
 
 }

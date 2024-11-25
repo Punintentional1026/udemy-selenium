@@ -1,11 +1,13 @@
 
-public class PS2 {
+public class PS2 extends PS3 {
 
 	int a;
 	
 	//default constructor
 	
 	public PS2(int a) {
+		//super() must be the first line of the constructor
+		super(a); //parent class constructor is invoked.
 		this.a = a; //this
 	}
 
