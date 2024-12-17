@@ -26,15 +26,20 @@ public class StandAloneTest {
 		List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
 		
 		// This is how I would handle adding the ZARA COAT 3 product to the cart
-		for (WebElement product : products) {
-			String productName = product.findElement(By.tagName("b")).getText();
-			
-			if(productName.equals("ZARA COAT 3"))
-			{
-				product.findElement(By.xpath("//Button[2]")).click();
-			}
-		}
+		//for (WebElement product : products) {
+		//	String productName = product.findElement(By.tagName("b")).getText();
+		//	
+		//	if(productName.equals("ZARA COAT 3"))
+		//	{
+		//		product.findElement(By.xpath("//Button[2]")).click();
+		//	}
+		//}
 		
+		// Instructors example to handle this
+		WebElement prod = products.stream().filter(product -> 
+		product.findElement(By.cssSelector("b")).getText().equals("ZARA COAT 3")).findFirst().orElse(null);
+		
+		prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
 
 	}
 
