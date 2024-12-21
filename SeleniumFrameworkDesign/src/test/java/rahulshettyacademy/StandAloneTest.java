@@ -7,6 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class StandAloneTest {
@@ -22,6 +25,9 @@ public class StandAloneTest {
 		driver.findElement(By.id("userEmail")).sendKeys("RobertKMaley@rhyta.com");
 		driver.findElement(By.id("userPassword")).sendKeys("CHl($$U-Vb\"0wq;");
 		driver.findElement(By.id("login")).click();
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mb-3")));
 		
 		List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
 		
@@ -40,6 +46,11 @@ public class StandAloneTest {
 		product.findElement(By.cssSelector("b")).getText().equals("ZARA COAT 3")).findFirst().orElse(null);
 		
 		prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
+		//ng-animating
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
+		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();	
 
 	}
 
