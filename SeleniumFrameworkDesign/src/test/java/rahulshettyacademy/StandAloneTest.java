@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,6 +17,8 @@ public class StandAloneTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		String productName = "ZARA COAT 3";
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
@@ -35,7 +38,7 @@ public class StandAloneTest {
 		//for (WebElement product : products) {
 		//	String productName = product.findElement(By.tagName("b")).getText();
 		//	
-		//	if(productName.equals("ZARA COAT 3"))
+		//	if(productName.equals(productName))
 		//	{
 		//		product.findElement(By.xpath("//Button[2]")).click();
 		//	}
@@ -43,14 +46,21 @@ public class StandAloneTest {
 		
 		// Instructors example to handle this
 		WebElement prod = products.stream().filter(product -> 
-		product.findElement(By.cssSelector("b")).getText().equals("ZARA COAT 3")).findFirst().orElse(null);
+		product.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
 		
 		prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
 		//ng-animating
 		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
-		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();	
+		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
+		
+		List<WebElement> cartProducts = driver.findElements(By.xpath("//*[@class='cartSection']/h3"));
+		boolean match = cartProducts.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
+		Assert.assertTrue(match);
+		
+		driver.findElement(By.cssSelector(".totalRow button")).click();
+
 
 	}
 
