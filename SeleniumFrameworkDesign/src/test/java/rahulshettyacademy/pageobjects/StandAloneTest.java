@@ -1,4 +1,4 @@
-package rahulshettyacademy;
+package rahulshettyacademy.pageobjects;
 
 import java.time.Duration;
 import java.util.List;
@@ -26,6 +26,8 @@ public class StandAloneTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/client");
+		
+		LandingPage landingPage = new LandingPage(driver);
 		
 		driver.findElement(By.id("userEmail")).sendKeys("RobertKMaley@rhyta.com");
 		driver.findElement(By.id("userPassword")).sendKeys("CHl($$U-Vb\"0wq;");
