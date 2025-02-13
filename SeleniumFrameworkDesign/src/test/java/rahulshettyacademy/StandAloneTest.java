@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -17,6 +18,8 @@ public class StandAloneTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		String productName = "ZARA COAT 3";
+		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -41,6 +44,12 @@ public class StandAloneTest {
 		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
 		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
 		
+		List<WebElement> cartProducts = driver.findElements(By.xpath("//*[@class='cartSection']/h3"));
+		
+		Boolean match = cartProducts.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
+		Assert.assertTrue(match);
+		
+		driver.findElement(By.cssSelector(".totalRow button")).click();
 	}
 
 }
