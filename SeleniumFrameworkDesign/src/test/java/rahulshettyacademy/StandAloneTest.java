@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import rahulshettyacademy.pageobjects.LandingPage;
 
 public class StandAloneTest {
 
@@ -27,6 +28,7 @@ public class StandAloneTest {
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/client");
 		
+		LandingPage landingPage = new LandingPage(driver);
 		driver.findElement(By.id("userEmail")).sendKeys("johnhsmith@testng.com");
 		driver.findElement(By.id("userPassword")).sendKeys("4GWjvay3BuSciU1z");
 		driver.findElement(By.id("login")).click();
