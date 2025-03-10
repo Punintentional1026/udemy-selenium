@@ -26,8 +26,20 @@ public class LandingPage {
 	WebElement userEmail;
 
 	@FindBy(id="userPassword")
-	WebElement password;
+	WebElement passwordEle;
 
 	@FindBy(id="login")
-	WebElement login;
+	WebElement submit;
+	
+	public void loginApplication(String email, String password)
+	{
+		userEmail.sendKeys(email);
+		passwordEle.sendKeys(password);
+		submit.click();
+	}
+	
+	public void goTo()
+	{
+		driver.get("https://rahulshettyacademy.com/client");
+	}
 }

@@ -15,7 +15,7 @@ import org.testng.Assert;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import rahulshettyacademy.pageobjects.LandingPage;
 
-public class StandAloneTest {
+public class SubmitOrderTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -26,11 +26,10 @@ public class StandAloneTest {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
-		driver.get("https://rahulshettyacademy.com/client");
 		
-		driver.findElement(By.id("userEmail")).sendKeys("johnhsmith@testng.com");
-		driver.findElement(By.id("userPassword")).sendKeys("4GWjvay3BuSciU1z");
-		driver.findElement(By.id("login")).click();
+		LandingPage landingPage = new LandingPage(driver);
+		landingPage.goTo();
+		landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mb-3")));
