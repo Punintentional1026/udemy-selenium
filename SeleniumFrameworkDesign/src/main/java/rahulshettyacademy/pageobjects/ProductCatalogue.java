@@ -8,21 +8,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ProductCatalogue {
+import rahulshettyacademy.AbstractComponents.AbstractComponent;
+
+public class ProductCatalogue extends AbstractComponent {
 
 	WebDriver driver;
 	
 	public ProductCatalogue(WebDriver driver)
 	{
 		//Initialization
+		super(driver);
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	//List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
-	
 	//PageFactory
 	@FindBy(css=".mb-3")
 	List<WebElement> products;
+	
+	By productsBy = By.cssSelector(".mb-3");
 
+	public List<WebElement> getProductList()
+	{
+		waitForElementToAppear(productsBy);
+		return products;
+	}
 }

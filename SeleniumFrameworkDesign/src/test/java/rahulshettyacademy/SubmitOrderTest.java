@@ -14,6 +14,7 @@ import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import rahulshettyacademy.pageobjects.LandingPage;
+import rahulshettyacademy.pageobjects.ProductCatalogue;
 
 public class SubmitOrderTest {
 
@@ -31,10 +32,8 @@ public class SubmitOrderTest {
 		landingPage.goTo();
 		landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mb-3")));
-		
-		List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
+		ProductCatalogue productCatalogue = new ProductCatalogue(driver);
+		List<WebElement> products = productCatalogue.getProductList();
 		
 		WebElement prod = products.stream().filter(product ->
 		product.findElement(By.cssSelector("b")).getText().equals("ZARA COAT 3")).findFirst().orElse(null);
