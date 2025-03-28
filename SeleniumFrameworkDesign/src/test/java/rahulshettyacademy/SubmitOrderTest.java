@@ -28,21 +28,16 @@ public class SubmitOrderTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		
 		LandingPage landingPage = new LandingPage(driver);
 		landingPage.goTo();
 		landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		
 		ProductCatalogue productCatalogue = new ProductCatalogue(driver);
 		List<WebElement> products = productCatalogue.getProductList();
-		
-		WebElement prod = products.stream().filter(product ->
-		product.findElement(By.cssSelector("b")).getText().equals("ZARA COAT 3")).findFirst().orElse(null);
-		
-		prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
-		//ng-animating
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating"))));
+		productCatalogue.addProductToCart(productName);
+
 		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
 		
 		List<WebElement> cartProducts = driver.findElements(By.xpath("//*[@class='cartSection']/h3"));
@@ -63,9 +58,7 @@ public class SubmitOrderTest {
 		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
 		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 		driver.close();
-		
-		
-		
+
 	}
 
 }
