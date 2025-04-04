@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import rahulshettyacademy.pageobjects.CartPage;
 import rahulshettyacademy.pageobjects.LandingPage;
 import rahulshettyacademy.pageobjects.ProductCatalogue;
 
@@ -32,20 +33,17 @@ public class SubmitOrderTest {
 		
 		LandingPage landingPage = new LandingPage(driver);
 		landingPage.goTo();
-		landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
-		
-		ProductCatalogue productCatalogue = new ProductCatalogue(driver);
+
+		ProductCatalogue productCatalogue = landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		List<WebElement> products = productCatalogue.getProductList();
 		productCatalogue.addProductToCart(productName);
 
-		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
+		CartPage cartPage = productCatalogue.goToCartPage();
+		Boolean match = cartPage.VerifyProductDisplay(productName);
 		
-		List<WebElement> cartProducts = driver.findElements(By.xpath("//*[@class='cartSection']/h3"));
-		
-		Boolean match = cartProducts.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
+		//Validation cannot go into pageobject files
 		Assert.assertTrue(match);
-		
-		driver.findElement(By.cssSelector(".totalRow button")).click();
+		cartPage.goToCheckout();
 		
 		Actions a = new Actions(driver);
 		a.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "india").build().perform();
