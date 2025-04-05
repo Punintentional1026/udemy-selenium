@@ -14,6 +14,8 @@ import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import rahulshettyacademy.pageobjects.CartPage;
+import rahulshettyacademy.pageobjects.CheckoutPage;
+import rahulshettyacademy.pageobjects.ConfirmationPage;
 import rahulshettyacademy.pageobjects.LandingPage;
 import rahulshettyacademy.pageobjects.ProductCatalogue;
 
@@ -43,17 +45,12 @@ public class SubmitOrderTest {
 		
 		//Validation cannot go into pageobject files
 		Assert.assertTrue(match);
-		cartPage.goToCheckout();
+		CheckoutPage checkoutPage = cartPage.goToCheckout();
 		
-		Actions a = new Actions(driver);
-		a.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "india").build().perform();
+		checkoutPage.selectCountry("India");
+		ConfirmationPage confirmationPage = checkoutPage.submitOrder();
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
-		
-		driver.findElement(By.xpath("(//button[contains(@class, 'ta-item')])[2]")).click();
-		driver.findElement(By.cssSelector(".action__submit")).click();
-		
-		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
+		String confirmMessage = confirmationPage.getConfirmationMessage();
 		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 		driver.close();
 
