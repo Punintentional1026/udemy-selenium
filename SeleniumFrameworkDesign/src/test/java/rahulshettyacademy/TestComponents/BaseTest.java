@@ -10,12 +10,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import rahulshettyacademy.pageobjects.LandingPage;
 
 public class BaseTest {
 
 	public WebDriver driver;
 
-	public void initializeDriver() throws IOException
+	public WebDriver initializeDriver() throws IOException
 	{
 		//properties class
 		
@@ -43,5 +44,16 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		
+		return driver;
+	}
+	
+	public LandingPage launchApplication() throws IOException
+	{
+		driver = initializeDriver();
+		
+		LandingPage landingPage = new LandingPage(driver);
+		landingPage.goTo();
+
+		return landingPage;
 	}
 }

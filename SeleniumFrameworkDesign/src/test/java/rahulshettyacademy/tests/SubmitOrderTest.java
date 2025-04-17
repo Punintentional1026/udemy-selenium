@@ -1,5 +1,6 @@
 package rahulshettyacademy.tests;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -11,31 +12,26 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import rahulshettyacademy.TestComponents.BaseTest;
 import rahulshettyacademy.pageobjects.CartPage;
 import rahulshettyacademy.pageobjects.CheckoutPage;
 import rahulshettyacademy.pageobjects.ConfirmationPage;
 import rahulshettyacademy.pageobjects.LandingPage;
 import rahulshettyacademy.pageobjects.ProductCatalogue;
 
-public class SubmitOrderTest {
+public class SubmitOrderTest extends BaseTest {
 
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
 
+	@Test
+	public void submitOrder() throws IOException, InterruptedException
+	{
 		String productName = "ZARA COAT 3";
-		
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		driver.manage().window().maximize();
-		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		
-		LandingPage landingPage = new LandingPage(driver);
-		landingPage.goTo();
 
+		LandingPage landingPage = launchApplication();
+		
 		ProductCatalogue productCatalogue = landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		List<WebElement> products = productCatalogue.getProductList();
 		productCatalogue.addProductToCart(productName);
@@ -43,7 +39,6 @@ public class SubmitOrderTest {
 		CartPage cartPage = productCatalogue.goToCartPage();
 		Boolean match = cartPage.VerifyProductDisplay(productName);
 		
-		//Validation cannot go into pageobject files
 		Assert.assertTrue(match);
 		CheckoutPage checkoutPage = cartPage.goToCheckout();
 		
