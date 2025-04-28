@@ -29,6 +29,11 @@ public class AbstractComponent {
 	{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
 	}
+
+	public void waitForElementToAppear(WebElement findBy)
+	{
+		wait.until(ExpectedConditions.visibilityOf(findBy));
+	}
 	
 	public CartPage goToCartPage()
 	{
