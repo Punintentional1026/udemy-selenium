@@ -20,16 +20,16 @@ import rahulshettyacademy.pageobjects.CartPage;
 import rahulshettyacademy.pageobjects.CheckoutPage;
 import rahulshettyacademy.pageobjects.ConfirmationPage;
 import rahulshettyacademy.pageobjects.LandingPage;
+import rahulshettyacademy.pageobjects.OrderPage;
 import rahulshettyacademy.pageobjects.ProductCatalogue;
 
 public class SubmitOrderTest extends BaseTest {
 
+	String productName = "ZARA COAT 3";
 
 	@Test
 	public void submitOrder() throws IOException, InterruptedException
 	{
-
-		String productName = "ZARA COAT 3";
 
 		ProductCatalogue productCatalogue = landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		List<WebElement> products = productCatalogue.getProductList();
@@ -49,4 +49,14 @@ public class SubmitOrderTest extends BaseTest {
 
 	}
 
+	@Test(dependsOnMethods={"submitOrder"})
+	public void OrderHistoryTest()
+	{
+		//"ZARA COAT 3";
+		ProductCatalogue productCatalogue = landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
+		OrderPage orderPage = productCatalogue.goToOrdersPage();
+		Assert.assertTrue(orderPage.VerifyOrderDisplay(productName));
+	}
+	//To verify ZARA COAT 3 is displaying in orders page
+	
 }
