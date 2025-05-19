@@ -16,7 +16,7 @@ import rahulshettyacademy.pageobjects.ProductCatalogue;
 public class ErrorValidationsTest extends BaseTest {
 
 
-	@Test
+	@Test(groups={"ErrorHandling"})
 	public void LoginErrorValidation() throws IOException, InterruptedException
 	{
 
