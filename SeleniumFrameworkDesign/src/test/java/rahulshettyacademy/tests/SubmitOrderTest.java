@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -27,11 +28,11 @@ public class SubmitOrderTest extends BaseTest {
 
 	String productName = "ZARA COAT 3";
 
-	@Test
-	public void submitOrder() throws IOException, InterruptedException
+	@Test(dataProvider="getData", groups= {"Purchase"})
+	public void submitOrder(String email, String password, String productName) throws IOException, InterruptedException
 	{
 
-		ProductCatalogue productCatalogue = landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
+		ProductCatalogue productCatalogue = landingPage.loginApplication(email, password);
 		List<WebElement> products = productCatalogue.getProductList();
 		productCatalogue.addProductToCart(productName);
 
@@ -59,4 +60,9 @@ public class SubmitOrderTest extends BaseTest {
 	}
 	//To verify ZARA COAT 3 is displaying in orders page
 	
+	@DataProvider
+	public Object[][] getData()
+	{
+		return new Object[][] {{"johnhsmith@testng.com", "4GWjvay3BuSciU1z", "ZARA COAT 3"}, {"shetty@gmail.com", "Iamking@000", "ADIDAS ORIGINAL"}};
+	}
 }
