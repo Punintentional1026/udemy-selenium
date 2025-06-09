@@ -1,11 +1,15 @@
 package rahulshettyacademy.tests;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -61,19 +65,30 @@ public class SubmitOrderTest extends BaseTest {
 	}
 	//To verify ZARA COAT 3 is displaying in orders page
 	
-	@DataProvider
-	public Object[][] getData()
+	public String getScreenshot(String testCaseName) throws IOException
 	{
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("email", "johnhsmith@testng.com");
-		map.put("password", "4GWjvay3BuSciU1z");
-		map.put("product", "ZARA COAT 3");
-		
-		HashMap<String, String> map1 = new HashMap<String, String>();
-		map1.put("email", "shetty@gmail.com");
-		map1.put("password", "Iamking@000");
-		map1.put("product", "ADIDAS ORIGINAL");
-		
-		return new Object[][] {{map}, {map1}};
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File file = new File(System.getProperty("user.dir") + "//reports//" + testCaseName + ".png");
+		FileUtils.copyFile(source, file);
+		return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+	}
+	
+	@DataProvider
+	public Object[][] getData() throws IOException
+	{
+		String filePath = System.getProperty("user.dir") + "\\src\\test\\java\\rahulshettyacademy\\data\\PurchaseOrder.json";
+		List<HashMap<String, String>> data = getJsonDataToMap(filePath);
+		return new Object[][] {{data.get(0)}, {data.get(1)}};
 	}
 }
+
+//HashMap<String, String> map = new HashMap<String, String>();
+//map.put("email", "johnhsmith@testng.com");
+//map.put("password", "4GWjvay3BuSciU1z");
+//map.put("product", "ZARA COAT 3");
+//
+//HashMap<String, String> map1 = new HashMap<String, String>();
+//map1.put("email", "shetty@gmail.com");
+//map1.put("password", "Iamking@000");
+//map1.put("product", "ADIDAS ORIGINAL");
