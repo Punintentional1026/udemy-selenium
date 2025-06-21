@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
 import rahulshettyacademy.TestComponents.BaseTest;
 import rahulshettyacademy.pageobjects.CartPage;
 import rahulshettyacademy.pageobjects.CheckoutPage;
@@ -19,8 +22,6 @@ public class ErrorValidationsTest extends BaseTest {
 	@Test(groups={"ErrorHandling"})
 	public void LoginErrorValidation() throws IOException, InterruptedException
 	{
-
-		String productName = "ZARA COAT 3";
 
 		landingPage.loginApplication("johnhsmith@testng.com", "4GWjvay3BuSciU1z");
 		Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());

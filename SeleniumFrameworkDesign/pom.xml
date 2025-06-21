@@ -29,6 +29,12 @@
 	    <artifactId>selenium-java</artifactId>
 	    <version>4.28.1</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>5.1.2</version>
+	</dependency>
 	<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 	<dependency>
 	    <groupId>io.github.bonigarcia</groupId>
